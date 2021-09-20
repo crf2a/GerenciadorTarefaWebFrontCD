@@ -1,12 +1,11 @@
 import React from 'react';
 import * as Styled from './styles';
-import Image from '../../Images/filter.png'
 
-function Filter({title}){
+function Filter(props){
     return (
-        <Styled.Container>
-            <img src={Image} alt="FILTRO"/>
-            <span>{title}</span>
+        <Styled.Container activation={props.actived}>
+            <img src={props.img} alt="FILTRO"/>
+            <span>{props.title}</span>
         </Styled.Container>
     )
 }
