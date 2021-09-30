@@ -31,4 +31,9 @@ export const Container = styled.div`
             
         }
 
+        button{
+            border: none;
+            
+        }
+
 `

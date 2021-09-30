@@ -10,11 +10,20 @@ export const Container = styled.div`
         display: flex;
 
         p{
+            font-family: Impact, Charcoal, sans-serif;
+            font-size: 13px;
+            letter-spacing: 2.2px;
+            word-spacing: 3px;
+            color: #008000;
+            font-weight: normal;
+            text-decoration: none;
+            font-style: italic;
+            font-variant: normal;
+            text-transform: uppercase;
             width: 100%;
             text-align: center;
-            color: #008000;
-            margin: o 10px;
-            
+            margin: 20px;
         }
        
 `
+
