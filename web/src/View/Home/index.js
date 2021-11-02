@@ -1,5 +1,6 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import * as Styled from './styles';
+import api from '../../services/api'
 
 /* IMAGES */
 import Image from '../../Images/filter3.png';
@@ -21,38 +22,53 @@ import TaskCard from '../../Components/TaskCard';
 
 function Home() {
 
-  const [filterActived, functionFilter] = useState();
+  //variável e função responsável por atualizar o valor do filtro
+  const [filterActived, functionFilter] = useState('all');
+
+  // a setTasks vai ser a função responsável por armazenar na variável tasks as tarefas retornadas do banco de dados
+  const [tasks, setTasks] = useState([]);
+
+  //função responsável por fazer as requisições para o backend
+  async function loadTasks(){
+    await api.get(`/task//filter/${filterActived}/11:11:11:11:11:12`)
+    .then(response => {
+      setTasks(response.data)
+    })
+  };
+
+  useEffect(() => {
+    loadTasks();
+  }, [filterActived]);
 
   return (
     <Styled.Container>
       <Header />
         <Styled.ContainerFilter>
-          <button type="button" onClick={() => functionFilter('todos')}>
-          <Filter title="Todos" img={Image} actived={filterActived === 'todos'}/>
+          <button type="button" onClick={() => functionFilter('all')}>
+          <Filter title="Todos" img={Image} actived={filterActived === 'all'}/>
           </button>
-          <button type="button" onClick={() => functionFilter('hoje')}>
-          <Filter title="Hoje" img={Image} actived={filterActived === 'hoje'}/>
+          <button type="button" onClick={() => functionFilter('today')}>
+          <Filter title="Hoje" img={Image} actived={filterActived === 'today'}/>
           </button>
-          <button type="button" onClick={() => functionFilter('semana')}>
-          <Filter title="Semana" img={Image} actived={filterActived === 'semana'}/>
+          <button type="button" onClick={() => functionFilter('week')}>
+          <Filter title="Semana" img={Image} actived={filterActived === 'week'}/>
           </button>
-          <button type="button" onClick={() => functionFilter('mes')}>
-          <Filter title="Mês" img={Image} actived={filterActived === 'mes'}/>
+          <button type="button" onClick={() => functionFilter('month')}>
+          <Filter title="Mês" img={Image} actived={filterActived === 'month'}/>
           </button>
         </Styled.ContainerFilter>
         <Styled.ContainerCard>
-          <TaskCard img={Futebol} title="Futebol"/>
-          <TaskCard img={Viagem} title="Viagem"/>
-          <TaskCard img={Cinema} title="Cinema"/>
-          <TaskCard img={Lanche} title="Lanche"/>
-          <TaskCard img={Prova} title="Prova"/>
-          <TaskCard img={Academia} title="Academia"/>
-          <TaskCard img={Compra} title="Compra"/>
-          <TaskCard img={Trabalho} title="Trabalho"/>
+        {
+             tasks.map(
+               t => ( 
+               <TaskCard />
+               ))
+           }
         </Styled.ContainerCard>
       <Footer />
     </Styled.Container>
   )
-}
+};
 
+/* REPONSÁVEL POR EXPORTAR A FUNÇÃO PARA OUTRAS ÁREA DO CÓDIGO */
 export default Home;

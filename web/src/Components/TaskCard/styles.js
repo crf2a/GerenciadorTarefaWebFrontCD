@@ -13,6 +13,7 @@ export const Container = styled.div`
 `
 
 export const TopCard = styled.div`
+        font-family: Tahoma, Geneva, sans-serif;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -21,6 +22,7 @@ export const TopCard = styled.div`
         img{
                 width: 70px;
                 height: 70px;
+                
             }
 `
 

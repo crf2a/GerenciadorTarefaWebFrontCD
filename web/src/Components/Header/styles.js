@@ -12,9 +12,11 @@ export const Menu = styled.div`
         display: flex;
         align-items: center;
         
+
         a{
+                font-family: Impact, Charcoal, sans-serif;
                 color: #FFF;
-                font-weight: bold;
+                font-weight: normal;
                 text-decoration: none;
                 margin: 0 10px;
         }
