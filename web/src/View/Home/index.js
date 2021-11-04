@@ -2,17 +2,8 @@ import React, {useState, useEffect} from 'react';
 import * as Styled from './styles';
 import api from '../../services/api'
 
-/* IMAGES */
+/* Filter Icon */
 import Image from '../../Images/filter3.png';
-import Futebol from '../../Images/futebol.png';
-import Viagem from '../../Images/viagem.png';
-import Cinema from '../../Images/cinema.png';
-import Lanche from '../../Images/lanche.png';
-import Prova from '../../Images/prova.png';
-import Academia from '../../Images/academia.png';
-import Compra from '../../Images/compra.png';
-import Trabalho from '../../Images/trabalho.png';
-
 
 /* COMPONENTS */
 import Header from '../../Components/Header';
@@ -30,7 +21,7 @@ function Home() {
 
   //função responsável por fazer as requisições para o backend
   async function loadTasks(){
-    await api.get(`/task//filter/${filterActived}/11:11:11:11:11:12`)
+    await api.get(`/task//filter/${filterActived}/11:11:11:11:11:11`)
     .then(response => {
       setTasks(response.data)
     })
@@ -61,7 +52,7 @@ function Home() {
         {
              tasks.map(
                t => ( 
-               <TaskCard />
+               <TaskCard type={t.type} title={t.title} when={t.when}/>
                ))
            }
         </Styled.ContainerCard>
