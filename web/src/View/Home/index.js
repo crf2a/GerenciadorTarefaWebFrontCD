@@ -47,6 +47,9 @@ function Home() {
           <button type="button" onClick={() => functionFilter('month')}>
           <Filter title="Mês" img={Image} actived={filterActived === 'month'}/>
           </button>
+          <button type="button" onClick={() => functionFilter('year')}>
+          <Filter title="Ano" img={Image} actived={filterActived === 'year'}/>
+          </button>
         </Styled.ContainerFilter>
         <Styled.ContainerCard>
         {
