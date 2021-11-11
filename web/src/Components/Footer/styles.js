@@ -24,6 +24,10 @@ export const Container = styled.div`
             text-align: center;
             margin: 20px;
         }
-       
+        
+        a{
+            color: #008000;
+            text-decoration: none;
+        }
 `
 

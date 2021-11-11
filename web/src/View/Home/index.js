@@ -3,7 +3,7 @@ import * as Styled from './styles';
 import api from '../../services/api'
 
 /* Filter Icon */
-import Image from '../../Images/filter3.png';
+import Image from '../../Images/filter01.png';
 
 /* COMPONENTS */
 import Header from '../../Components/Header';
