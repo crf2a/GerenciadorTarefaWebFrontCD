@@ -1,6 +1,8 @@
 import React, {useState, useEffect} from 'react';
 import * as Styled from './styles';
 import api from '../../services/api'
+import { Link } from 'react-router-dom';
+
 
 /* Filter Icon */
 import Image from '../../Images/filter01.png';
@@ -14,7 +16,7 @@ import TaskCard from '../../Components/TaskCard';
 function Home() {
 
   //variável e função responsável por atualizar o valor do filtro
-  const [filterActived, functionFilter] = useState('all');
+  const [filterActived, functionFilter] = useState('today');
 
   // a setTasks vai ser a função responsável por armazenar na variável tasks as tarefas retornadas do banco de dados
   const [tasks, setTasks] = useState([]);
@@ -55,7 +57,9 @@ function Home() {
         {
              tasks.map(
                t => ( 
-               <TaskCard type={t.type} title={t.title} when={t.when}/>
+                <Link to={`/task/${t._id}`}>  
+                  <TaskCard type={t.type} title={t.title} when={t.when} />
+                </Link>
                ))
            }
         </Styled.ContainerCard>
