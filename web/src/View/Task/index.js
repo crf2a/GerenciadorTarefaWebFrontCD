@@ -4,6 +4,8 @@ import api from '../../services/api';
 import { format } from 'date-fns';
 import { useParams } from 'react-router';
 import { Navigate } from 'react-router';
+import Slider from "react-slick";
+
 
 /* IMAGENS */
 import Image from '../../Images/filter.png';
